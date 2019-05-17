@@ -1,0 +1,6 @@
+*.sdcard
+*.sdcard.gz
+boot.img
+mfgimages-*
+firmware
+*.tar.*

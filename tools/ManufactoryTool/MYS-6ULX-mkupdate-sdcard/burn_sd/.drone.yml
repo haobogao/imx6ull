@@ -1,0 +1,23 @@
+build:
+    image: myir-dev/gitbook:v1.5
+    commands:
+        - apt-get -y install parted mtools dosfstools
+        - wget http://192.168.1.13:8001/MYS-6ULX/mkupdate-sdcard/firmware.tar.gz
+        - wget http://192.168.1.13:8001/MYS-6ULX/mkupdate-sdcard/mfgimages-mys-imx6ul-ddr256m-nand256m.tar.gz
+        - wget http://192.168.1.13:8001/MYS-6ULX/mkupdate-sdcard/mfgimages-mys-imx6ull-ddr256m-nand256m.tar.gz
+        - wget http://192.168.1.13:8001/MYS-6ULX/mkupdate-sdcard/mfgimages-mys-imx6ul-ddr512m-emmc4g.tar.gz
+        - wget http://192.168.1.13:8001/MYS-6ULX/mkupdate-sdcard/mfgimages-mys-imx6ull-ddr512m-emmc4g.tar.gz
+        - tar xvf firmware.tar.gz
+        - tar xvf mfgimages-mys-imx6ull-ddr256m-nand256m.tar.gz
+        - tar xvf mfgimages-mys-imx6ul-ddr256m-nand256m.tar.gz
+        - tar xvf mfgimages-mys-imx6ull-ddr512m-emmc4g.tar.gz
+        - tar xvf mfgimages-mys-imx6ul-ddr512m-emmc4g.tar.gz
+        - rm mfgimages-mys-imx6ull-ddr512m-emmc4g.tar.gz
+        - rm mfgimages-mys-imx6ul-ddr512m-emmc4g.tar.gz
+        - rm mfgimages-mys-imx6ull-ddr256m-nand256m.tar.gz
+        - rm mfgimages-mys-imx6ul-ddr256m-nand256m.tar.gz
+        - ./build-sdcard.sh -p mys6ull -n -d mfgimages-mys-imx6ull-ddr256m-nand256m
+        - ./build-sdcard.sh -p mys6ul -n -d mfgimages-mys-imx6ul-ddr256m-nand256m
+        - ./build-sdcard.sh -p mys6ull -n -d mfgimages-mys-imx6ull-ddr512m-emmc4g
+        - ./build-sdcard.sh -p mys6ul -n -d mfgimages-mys-imx6ul-ddr512m-emmc4g
+        - tree -L 1

@@ -1,0 +1,5 @@
+#!/home/zzdc/Workdir1/haobo/imx/tools/meta/sysroots/x86_64-pokysdk-linux/usr/bin/python2.7
+
+import pydoc
+if __name__ == '__main__':
+    pydoc.cli()
